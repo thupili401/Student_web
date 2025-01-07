@@ -1,0 +1,2 @@
+[32mINFO    [0m test_sign_in_password:test_E2E.py:24 Testcase: Sign in with Password
+[32mINFO    [0m test_add_favourite_books:test_E2E.py:485 Test case: User add's favourite books
