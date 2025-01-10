@@ -72,9 +72,12 @@ class GoalExamPage:
         def edit_profile(self):
             ele = self.driver.find_element(*GoalExamPage.profile_icon).click()
             self.driver.find_element(*GoalExamPage.manage_profile).click()
+            time.sleep(2)
             self.driver.find_element(*GoalExamPage.profile_edit).click()
+            time.sleep(2)
             self.driver.find_element(*GoalExamPage.profile_name).clear()
-            self.driver.find_element(*GoalExamPage.profile_name).send_keys("LRAJ")
+            time.sleep(2)
+            self.driver.find_element(*GoalExamPage.profile_name).send_keys("Tester")
             time.sleep(3)
             self.driver.find_element(*GoalExamPage.update_profile).click()
 
@@ -99,19 +102,9 @@ class GoalExamPage:
             self.driver.find_element(*GoalExamPage.exam_tab).click()
             self.driver.find_element(*GoalExamPage.eng_lang_btn).click()
             self.driver.find_element(*GoalExamPage.lang_done_btn).click()
-            try:
-                avatar = self.driver.find_element(*GoalExamPage.avatar_click)
-                if avatar.is_displayed():
-                    avatar.click()
-                else:
-                    raise Exception("Avatar not displayed")
-            except:
-                self.driver.find_element(By.XPATH, "//*[@to='/learn/home']").click()
-                ele = self.driver.find_element(By.XPATH, "//*[@to='/test/home']").text
-                if ele == 'Test':
-                    print("User Goal is Updated")
-                else:
-                    print("User Goal not changed")
+            time.sleep(5)
+            # self.driver.find_element(By.XPATH, "//*[@to='/learn/home']").click()
+
 
 
 

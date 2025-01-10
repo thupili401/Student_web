@@ -38,7 +38,7 @@ class achievehomepage(TestHomePage):
     explore_mastery_1st_chapter = (By.XPATH, "//div[@class='achieve_homepage-content-wrapper']/div/div[2]/div[1]")
     explore_mastery_1st_topic = (By.XPATH, "//div[@class='achieve_homepage-content-wrapper']/div/div[2]/div[1]/div[2]/div[1]")
     explore_mastery_1st_video = (By.XPATH, "//*[@id='app']/main/div[2]/div/div[2]/div/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div/div/div[3]")
-
+    time_spend_everyday = (By.CSS_SELECTOR, "i[color='black']")
 
 
 
@@ -159,7 +159,7 @@ class achievehomepage(TestHomePage):
             else:
                 self.wait_for_clickable(achievehomepage.dt2_start_test_btn).click()
 
-    def create_PAJ_journey(self):
+    def     create_PAJ_journey(self):
         self.wait_for_clickable(achievehomepage.achieve_module).click()
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         self.wait_for_clickable(achievehomepage.dt1_resume_test_btn).click()
@@ -168,6 +168,9 @@ class achievehomepage(TestHomePage):
     "//img[contains(@src,'images/overall-accuracy.svg')]/parent::div/following-sibling::div/div[4]").click()
         self.wait_for_clickable(achievehomepage.PAJ_name_field).click()
         self.wait_for_clickable(achievehomepage.PAJ_name_field).send_keys("PAJ Journey")
+
+        for i in range(20):
+            self.wait_for_clickable(achievehomepage.time_spend_everyday).click()
         self.wait_for_clickable(achievehomepage.target_date).click()
         self.driver.find_element(By.XPATH, "//div[@class='DayPicker-Months']/div/div[3]/div[2]/div[3]").click()
         self.wait_for_clickable(achievehomepage.generate_PAJ_button).click()

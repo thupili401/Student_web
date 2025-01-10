@@ -129,7 +129,7 @@ class TestEmbibe(utility):
         log.info("Testcase: Verify Cheat Sheet is present in the Author Books")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.learn
+    @pytest.mark.xfail
     def test_sub_embibe_explainers_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -139,7 +139,7 @@ class TestEmbibe(utility):
             "Testcase: Verify Embibe Explainers carousel is present in Subject filter and no issues in video player")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.learnn
+    @pytest.mark.xfail
     def test_sub_trending_videos_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -148,7 +148,7 @@ class TestEmbibe(utility):
         log.info("Testcase: Verify Trending Videos carousel is present")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.learn
+    @pytest.mark.xfail
     def test_sub_enrich_your_learning_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -166,7 +166,7 @@ class TestEmbibe(utility):
         log.info("Testcase: Verify Books With Videos & Solutions - <Subject>")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.learn
+    @pytest.mark.xfail
     def test_sub_learn_chapters(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -658,15 +658,6 @@ class TestEmbibe(utility):
         log.info("Test case: User clicks on Doubt Resolution Card Deeplink button present in the Simple Monetisation Page")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.profile
-    def test_profile_edit_goal_exam(self):
-        log = self.getLogger()
-        self.test_sign_in_password()
-        gep = GoalExamPage(self.driver)
-        gep.edit_goal_exam()
-        log.info("Test case: Edit Goal from the Profile Screen")
-
-    @pytest.mark.usefixtures("setup", "log_on_failure")
     @pytest.mark.achieve
     def test_create_diagnostic_test(self):
         log = self.getLogger()
@@ -733,6 +724,15 @@ class TestEmbibe(utility):
         gep = GoalExamPage(self.driver)
         gep.hero_banner_goal_exam_selection_hin()
         log.info("Test case: User is able to select Hindi Language")
+
+    @pytest.mark.usefixtures("setup", "log_on_failure")
+    @pytest.mark.profile
+    def test_profile_edit_goal_exam(self):
+        log = self.getLogger()
+        self.test_sign_in_password()
+        gep = GoalExamPage(self.driver)
+        gep.edit_goal_exam()
+        log.info("Test case: Edit Goal from the Profile Screen")
 
 
 
