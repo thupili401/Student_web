@@ -39,6 +39,8 @@ class GoalExamPage:
             self.driver.find_element(*GoalExamPage.select_exam_button).click()
             self.driver.find_element(*GoalExamPage.eng_lang_btn).click()
             self.driver.find_element(*GoalExamPage.lang_done_btn).click()
+            time.sleep(10)
+
 
         def hero_banner_goal_exam_selection_hin(self):
             time.sleep(3)

@@ -1,6 +1,7 @@
+import os
+import shutil
 import allure
 import pytest
-from allure_commons.model2 import Attachment
 from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -9,10 +10,19 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 from Utilities.utility import utility
 
+# Function to clear the old Allure results
+def clear_allure_results():
+    allure_results_dir = "allure-results"  # Adjust the path if needed
+    if os.path.exists(allure_results_dir):
+        shutil.rmtree(allure_results_dir)  # Deletes the folder and its contents
+    os.makedirs(allure_results_dir)  # Creates a fresh folder
+
+# Run the clear function before pytest session starts
+def pytest_sessionstart(session):
+    clear_allure_results()
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="Type of browser. Default is chrome.")
-
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item, call):
@@ -21,11 +31,9 @@ def pytest_runtest_makereport(item, call):
     setattr(item, "rep_" + rep.when, rep)
     return rep
 
-
 @pytest.fixture
 def browser(request):
     return request.config.getoption("--browser")
-
 
 @pytest.fixture
 def setup(request, browser):
@@ -54,18 +62,9 @@ def setup(request, browser):
     yield driver
     driver.quit()
 
-
 @pytest.fixture()
 def log_on_failure(request):
     yield
     item = request.node
     if item.rep_call.failed:
         allure.attach(driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
-
-
-@pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_makereport(item, call):
-    outcome = yield
-    rep = outcome.get_result()
-    setattr(item, "rep_" + rep.when, rep)
-    return rep

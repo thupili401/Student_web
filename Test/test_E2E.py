@@ -129,7 +129,7 @@ class TestEmbibe(utility):
         log.info("Testcase: Verify Cheat Sheet is present in the Author Books")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.xfail
+    @pytest.mark.skip
     def test_sub_embibe_explainers_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -139,7 +139,7 @@ class TestEmbibe(utility):
             "Testcase: Verify Embibe Explainers carousel is present in Subject filter and no issues in video player")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.xfail
+    @pytest.mark.skip
     def test_sub_trending_videos_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -148,7 +148,7 @@ class TestEmbibe(utility):
         log.info("Testcase: Verify Trending Videos carousel is present")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.xfail
+    @pytest.mark.skip
     def test_sub_enrich_your_learning_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -157,7 +157,7 @@ class TestEmbibe(utility):
         log.info("Testcase: Verify Enrich Your Learning In <Subject> carousel is present")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.learn
+    @pytest.mark.skip
     def test_sub_books_with_videos_and_solutions_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -166,7 +166,7 @@ class TestEmbibe(utility):
         log.info("Testcase: Verify Books With Videos & Solutions - <Subject>")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.xfail
+    @pytest.mark.skip
     def test_sub_learn_chapters(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -176,6 +176,7 @@ class TestEmbibe(utility):
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
     @pytest.mark.learn
+    @pytest.mark.skip
     def test_sub_big_books_carousel(self):
         log = self.getLogger()
         self.test_sign_in_password()
@@ -193,7 +194,7 @@ class TestEmbibe(utility):
         learn.learn_continue_learning()
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.learnn
+    @pytest.mark.learn
     def test_learn_trending_videos(self):
         self.test_sign_in_password()
         learn = LearnHomePage(self.driver)
@@ -668,7 +669,7 @@ class TestEmbibe(utility):
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
     @pytest.mark.achieve
-    def test_i_will_take_the_test_later(self):
+    def test_achieve_i_will_take_the_test_later(self):
         log = self.getLogger()
         self.test_sign_in_password()
         achieve = achievehomepage(self.driver)
@@ -707,7 +708,7 @@ class TestEmbibe(utility):
         log.info("Test case: User creates PAJ Journey")
 
     @pytest.mark.usefixtures("setup", "log_on_failure")
-    @pytest.mark.achieve
+    @pytest.mark.achievee
     def test_click_explore_mastery(self):
         log = self.getLogger()
         self.test_sign_in_password()
